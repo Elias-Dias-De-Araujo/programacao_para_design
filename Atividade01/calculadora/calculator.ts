@@ -1,8 +1,8 @@
 class Calculator {
   //todo
-  batteryMax: number;
-  battery: number;
-  display: number;
+  private batteryMax: number;
+  private battery: number;
+  private display: number;
 
   constructor(batteryMax: number) {
     this.battery = 0;
@@ -10,45 +10,64 @@ class Calculator {
     this.batteryMax = batteryMax;
   }
 
+  public getBatteryMax(): number {
+    return this.batteryMax;
+  }
+  public getBattery(): number {
+    return this.battery;
+  }
+  public getDisplay(): number {
+    return this.display;
+  }
+  public setBatteryMax(value: number): void {
+    this.batteryMax = value;
+  }
+  public setBattery(value: number): void {
+    this.battery = value;
+  }
+  public setDisplay(value: number): void {
+    this.display = value;
+  }
+
   chargeBattery(value: number) {
-    this.battery += value;
-    if (this.battery >= this.batteryMax) {
-      this.battery = this.batteryMax;
+    this.setBattery(this.getBattery() + value);
+    if (this.getBattery() >= this.getBatteryMax()) {
+      this.setBattery(this.getBatteryMax());
     }
   }
 
   useBattery(): boolean {
-    if (this.battery <= 0) {
+    if (this.getBattery() <= 0) {
       console.log("fail: bateria insuficiente");
       return false;
     } else {
-      this.battery--;
+      this.setBattery(this.getBattery() - 1);
       return true;
     }
   }
 
   sum(a: number, b: number) {
     if (this.useBattery()) {
-      this.display = a + b;
+      this.setDisplay(a + b);
     }
   }
 
   sub(a: number, b: number) {
     if (this.useBattery()) {
-      this.display = a - b;
+      this.setDisplay(a - b);
     }
   }
 
   mult(a: number, b: number) {
     if (this.useBattery()) {
-      this.display = a * b;
+      this.setDisplay(a * b);
     }
   }
 
   division(num: number, den: number) {
     if (this.useBattery()) {
       if (den != 0) {
-        this.display = num / den;
+        this.setDisplay(num / den);
       } else {
         console.log("fail: divisão por zero");
       }
@@ -56,7 +75,10 @@ class Calculator {
   }
   toString() {
     return (
-      "display = " + this.display.toFixed(2) + ", battery = " + this.battery
+      "display = " +
+      this.display.toFixed(2) +
+      ", battery = " +
+      this.getBattery()
     );
   }
 }
