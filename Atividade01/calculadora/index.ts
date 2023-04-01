@@ -1,60 +1,60 @@
 import Calculator from "./calculator";
 
 function main() {
-  const myCalculator = new Calculator(5);
-  myCalculator.chargeBattery(10);
+  // case iniciar mostrar e recarregar
+  let myCalculator = new Calculator(5);
   console.log(myCalculator.toString());
-  myCalculator.sum(1, 2);
+
+  // case charge
+  myCalculator.chargeBattery(3);
   console.log(myCalculator.toString());
-  myCalculator.sub(1, 2);
+  myCalculator.chargeBattery(1);
   console.log(myCalculator.toString());
-  myCalculator.mult(1, 2);
+  
+  // case boundary
+  myCalculator.chargeBattery(2);
   console.log(myCalculator.toString());
-  myCalculator.division(1, 2);
-  console.log(myCalculator.toString());
+
+  // case reset
+  let myCalculator1 = new Calculator(4);
+  myCalculator1.chargeBattery(2);
+  console.log(myCalculator1.toString());
+  myCalculator1.chargeBattery(3);
+  console.log(myCalculator1.toString());
+
+  // case somando
+  let myCalculator2 = new Calculator(2);
+  myCalculator2.chargeBattery(2);
+  myCalculator2.sum(4,3);
+  console.log(myCalculator2.toString());
+
+  // case gastando bateria
+  myCalculator2.sum(2,3);
+  console.log(myCalculator2.toString());
+
+  // case sem bateria
+  myCalculator2.sum(-4,-1);
+
+  // case recarregando
+  myCalculator2.chargeBattery(1);
+  console.log(myCalculator2.toString());
+  myCalculator2.sum(-4,-2);
+  console.log(myCalculator2.toString());
+
+  // case dividindo
+  let myCalculator3 = new Calculator(3);
+  myCalculator3.chargeBattery(3);
+  myCalculator3.div(6,3);
+  console.log(myCalculator3.toString());
+
+  // case dividindo por zero
+  myCalculator3.div(7,0);
+  console.log(myCalculator3.toString());
+
+  // case gastando bateria
+  myCalculator3.div(7,2);
+  myCalculator3.div(10,2);
+  console.log(myCalculator3.toString());
 }
-
-/*
-function main() {
-  let chain = new Map();
-  let ui: string[] = [];
-  let calc = new Calculator(0);
-
-  chain.set("show", () => puts("" + calc));
-  chain.set("init", () => (calc = new Calculator(+ui[1])));
-  chain.set("charge", () => calc.chargeBattery(+ui[1]));
-  chain.set("sum", () => calc.sum(+ui[1], +ui[2]));
-  chain.set("div", () => calc.division(+ui[1], +ui[2]));
-
-  evaluate(chain, ui);
-}
-
-import { readFileSync } from "fs";
-
-let __lines = readFileSync(0).toString().split("\n");
-let input = () => {
-  let a = __lines.shift();
-  return a === undefined ? "" : a;
-};
-let write = (text: any) => process.stdout.write("" + text);
-let puts = (text: any) => console.log(text);
-function evaluate(chain: Map<string, Function>, param: string[]) {
-  while (true) {
-    let line = input();
-    puts("$" + line);
-    param.splice(0); //apagar tudo
-    line.split(" ").forEach((x: string) => param.push(x));
-
-    let cmd = param[0];
-    if (cmd == "end") {
-      return;
-    } else if (chain.has(cmd)) {
-      chain.get(cmd)!();
-    } else {
-      puts("fail: command not found");
-    }
-  }
-}
-*/
 
 main();

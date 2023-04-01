@@ -64,7 +64,7 @@ class Calculator {
     }
   }
 
-  division(num: number, den: number) {
+  div(num: number, den: number) {
     if (this.useBattery()) {
       if (den != 0) {
         this.setDisplay(num / den);
