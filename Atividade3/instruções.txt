@@ -1,0 +1,7 @@
+instalar pacotes: npm install
+
+para trocar de projeto basta trocar o script dev no package.json
+"dev": "ts-node-dev lapiseira/index.ts" - Projeto lapiseira
+"dev": "ts-node-dev tamagotchi/index.ts" - Projeto tamagotchi
+
+para executar: npm run dev
