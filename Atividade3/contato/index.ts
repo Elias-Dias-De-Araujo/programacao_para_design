@@ -1,18 +1,19 @@
-import Pet from "./fone";
+import Phone from "./phone";
 
 function main() {
-  const myPet = new Pet(20, 10, 15);
-  console.log(myPet.toString());
+  // case sucess
+  console.log(Phone.validate("(88)998131458"));
+  const myPhone = new Phone("oi", "(88)998131458");
+  console.log(myPhone.tostring());
 
-  const myPet1 = new Pet(10, 20, 50);
-  console.log(myPet.toString());
+  // case fail
+  console.log(Phone.validate("(88)99.131458"));
 
-  const myPet2 = new Pet(4, 4, 4);
-  myPet2.play();
-  myPet2.play();
-  myPet2.play();
-  myPet2.play();
-  console.log(myPet2.toString());
+  // case fail
+  console.log(Phone.validate("(88)998-131458"));
+
+  // case fail
+  console.log(Phone.validate("((88)9981-31458"));
 
 }
 

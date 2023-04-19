@@ -1,23 +1,23 @@
-class Fone { //todo
+class Phone { //todo
     private id:string;
     private number:string;
 
-    public constructor(id:string, number:string) {
+    public constructor(id:string, number:string){
         this.id = id;
         this.number = number;
     }
 
     public isValid() : boolean{
-        return Fone.validate(this.number)
+        return Phone.validate(this.number)
     }
 
     public static validate(number : string) : boolean {
-        var RegExpCond = /\d{2}\s\(\d{2}\)\s\d{4,5}\d{4}/g;
+        const RegExpCond = new RegExp("^[(]?[0-9]{2}[)]?[9]?[0-9]*$");
         return RegExpCond.test(number);
     }
 
     public tostring() : string {
-        return this.getId + ":" + this.getNumber
+        return this.getId() + ":" + this.getNumber();
     }
 
     public getId() : string {
@@ -37,4 +37,4 @@ class Fone { //todo
     }
 }
 
-export default Fone;
+export default Phone;
