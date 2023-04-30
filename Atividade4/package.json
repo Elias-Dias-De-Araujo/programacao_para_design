@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev Agenda2/index.ts",
+    "dev": "ts-node-dev Agenda3/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -19,8 +19,9 @@ export class Agenda {
 
   public toString(): string {
     var res = "";
-    for(let index = 0; index < this.getContacts().length; index++) {
-      res += this.getContacts()[index].toString() + "\n";
+    const contactOrderById = this.getContacts().sort((a, b) => a.getName().localeCompare(b.getName()))
+    for(let index = 0; index < contactOrderById.length; index++) {
+      res += contactOrderById[index].getPrefix() + contactOrderById[index].toString() + "\n";
     }
     return res;
   }
@@ -75,6 +76,22 @@ export class Agenda {
     }
 
     return searchList;
+  }
+
+  public getStarred() : Contact[] {
+    const starredList = this.getContacts().filter((c) => c.getStar() == true);
+    
+    for(let index = 0; index < starredList.length; index++) {
+      console.log(starredList[index].getPrefix() + starredList[index].toString());
+    }
+    console.log("\n");
+    
+    return starredList;
+  }
+
+  public star(name:string, value:boolean): void {
+    const index = this.findPosByName(name);
+    this.getContacts()[index].setStar(value);
   }
 
   public getContacts(): Contact[] {
